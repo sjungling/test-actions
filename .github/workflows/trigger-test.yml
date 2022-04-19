@@ -19,5 +19,5 @@ jobs:
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
           repository: '${{ github.repository }}'
-          event-type: build-tenant
+          event-type: test_result
           client-payload: '{"tenant": "${{ github.event.inputs.tenant }}", "github": ${{ toJson(github) }}}'
