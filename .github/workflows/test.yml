@@ -8,6 +8,5 @@ jobs:
   run_if_failure:
     runs-on: ubuntu-latest
     steps:
-      - env:
-          MESSAGE: ${{ github.event.client_payload.github }}
-        run: echo $MESSAGE
+      - name: echo back
+        run: echo  ${{ github.event.client_payload }}
