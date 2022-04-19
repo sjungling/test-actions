@@ -1,0 +1,23 @@
+---
+name: Build single tenant
+'on':
+  workflow_dispatch:
+    inputs:
+      tenant:
+        description: Which tenant to publish
+        required: true
+        type: choice
+        options:
+          - public
+jobs:
+  build-and-publish-docker:
+    runs-on: ubuntu-latest
+    environment: '${{ github.event.inputs.tenant }}'
+    steps:
+      - name: Dispatch Docker Builder
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          repository: '${{ github.repository }}'
+          event-type: build-tenant
+          client-payload: '{"tenant": "${{ github.event.inputs.tenant }}", "github": ${{ toJson(github) }}}'
