@@ -2,7 +2,7 @@ name: Build and Publish Docker
 
 on:
   repository_dispatch:
-    types: [test_result]
+    types: [build-tenant]
 
 jobs:
   run_if_failure:
