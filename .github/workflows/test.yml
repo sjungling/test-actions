@@ -9,12 +9,8 @@ on:
       ref:
         required: true
         type: string
-    secrets:
-      token:
-        required: true
-
 jobs:
-  run_if_failure:
+  test_workflow_call:
     runs-on: ubuntu-latest
     steps:
       - name: echo back client payload

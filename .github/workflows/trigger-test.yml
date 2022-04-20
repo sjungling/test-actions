@@ -12,13 +12,12 @@ name: Test Trigger
 jobs:
   build-and-publish-docker:
     runs-on: ubuntu-latest
-    environment: '${{ github.event.inputs.tenant }}'
     steps:
-      - uses: ./.github/workflows/test.yml@main
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/test.yml
         with:
           tenant: ${{ github.event.inputs.tenant }}
           ref: ${{ github.event.ref }}
-          token: '${{ secrets.GITHUB_TOKEN }}'
 
         # uses: ./.github/workflows/workflow-2.yml
         # with:
