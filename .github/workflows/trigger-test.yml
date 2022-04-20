@@ -1,5 +1,5 @@
 ---
-name: Build single tenant
+name: Test Trigger
 'on':
   workflow_dispatch:
     inputs:
@@ -19,5 +19,5 @@ jobs:
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
           repository: '${{ github.repository }}'
-          event-type: build-tenant
+          event-type: test-run
           client-payload: '{"tenant": "${{ github.event.inputs.tenant }}", "github": ${{ toJson(github.event) }}}'
