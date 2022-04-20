@@ -12,18 +12,8 @@ name: Test Trigger
 jobs:
   build-and-publish-docker:
     runs-on: ubuntu-latest
-    steps:
-      # - uses: actions/checkout@v3
-      # - uses: ./.github/workflows/my-action
-      #   with:
+    reuse-stuff:
       - uses: sjungling/test-actions/.github/workflows/test.yml@main
         with:
           tenant: ${{ github.event.inputs.tenant }}
           ref: ${{ github.event.ref }}
-
-        # uses: ./.github/workflows/workflow-2.yml
-        # with:
-        #   token: '${{ secrets.GITHUB_TOKEN }}'
-        #   repository: '${{ github.repository }}'
-        #   event-type: test-run
-        #   client-payload: '{"tenant": "${{ github.event.inputs.tenant }}", "github": { "ref": "${{ github.event.ref }}"}}'
