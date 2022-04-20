@@ -11,8 +11,6 @@ name: Test Trigger
           - public
 jobs:
   build-and-publish-docker:
-    permissions:
-      contents: write 
     runs-on: ubuntu-latest
     environment: '${{ github.event.inputs.tenant }}'
     steps:
@@ -20,7 +18,6 @@ jobs:
         with:
           tenant: ${{ github.event.inputs.tenant }}
           ref: ${{ github.event.ref }}
-        secrets:
           token: '${{ secrets.GITHUB_TOKEN }}'
 
         # uses: ./.github/workflows/workflow-2.yml
