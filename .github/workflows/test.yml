@@ -1,12 +1,12 @@
-name: Build and Publish Docker
+name: Test repo dispatch
 
 on:
   repository_dispatch:
-    types: [build-tenant]
+    types: [test-run]
 
 jobs:
   run_if_failure:
     runs-on: ubuntu-latest
     steps:
-      - name: echo back
-        run: echo  ${{ github.event.client_payload }}
+      - name: echo back client payload
+        run: echo ${{ github.event.client_payload }}
