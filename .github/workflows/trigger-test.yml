@@ -10,10 +10,8 @@ name: Test Trigger
         options:
           - public
 jobs:
-  build-and-publish-docker:
-    runs-on: ubuntu-latest
-    reuse-stuff:
-      - uses: sjungling/test-actions/.github/workflows/test.yml@main
-        with:
-          tenant: ${{ github.event.inputs.tenant }}
-          ref: ${{ github.event.ref }}
+  test:
+    uses: sjungling/test-actions/.github/workflows/test.yml@main
+    with:
+      tenant: ${{ github.event.inputs.tenant }}
+      ref: ${{ github.event.ref }}
