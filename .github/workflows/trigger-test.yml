@@ -22,4 +22,4 @@ jobs:
           token: '${{ secrets.GITHUB_TOKEN }}'
           repository: '${{ github.repository }}'
           event-type: test-run
-          client-payload: '{"tenant": "${{ github.event.inputs.tenant }}", "github": ${{ toJson(github) }}}'
+          client-payload: '{"tenant": "${{ github.event.inputs.tenant }}", "github": { "ref": "${{ github.event.ref }}"}}'
