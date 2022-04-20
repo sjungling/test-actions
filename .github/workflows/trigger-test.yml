@@ -11,6 +11,8 @@ name: Test Trigger
           - public
 jobs:
   build-and-publish-docker:
+    permissions:
+      contents: write 
     runs-on: ubuntu-latest
     environment: '${{ github.event.inputs.tenant }}'
     steps:
