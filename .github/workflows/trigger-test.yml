@@ -16,10 +16,17 @@ jobs:
     runs-on: ubuntu-latest
     environment: '${{ github.event.inputs.tenant }}'
     steps:
-      - name: Dispatch Docker Builder
-        uses: peter-evans/repository-dispatch@v2
+      call-workflow-passing-data:
+        uses: ./.github/workflows/test.yml
         with:
+          tenant: ${{ github.event.inputs.tenant }}
+          ref: ${{ github.event.ref }}
+        secrets:
           token: '${{ secrets.GITHUB_TOKEN }}'
-          repository: '${{ github.repository }}'
-          event-type: test-run
-          client-payload: '{"tenant": "${{ github.event.inputs.tenant }}", "github": { "ref": "${{ github.event.ref }}"}}'
+
+        # uses: ./.github/workflows/workflow-2.yml
+        # with:
+        #   token: '${{ secrets.GITHUB_TOKEN }}'
+        #   repository: '${{ github.repository }}'
+        #   event-type: test-run
+        #   client-payload: '{"tenant": "${{ github.event.inputs.tenant }}", "github": { "ref": "${{ github.event.ref }}"}}'

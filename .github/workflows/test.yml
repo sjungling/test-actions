@@ -1,12 +1,21 @@
 name: Test repo dispatch
 
 on:
-  repository_dispatch:
-    types: [test-run]
+  workflow_call:
+    inputs:
+      tenant:
+        required: true
+        type: string
+      ref:
+        required: true
+        type: string
+    secrets:
+      token:
+        required: true
 
 jobs:
   run_if_failure:
     runs-on: ubuntu-latest
     steps:
       - name: echo back client payload
-        run: echo ${{ github.event.client_payload }}
+        run: echo ${{ toJSON(inputs) }}
