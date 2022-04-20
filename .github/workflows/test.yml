@@ -14,4 +14,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo back client payload
-        run: echo ${{ toJSON(inputs) }}
+        run: echo ${{ fromJSON(inputs) }}
